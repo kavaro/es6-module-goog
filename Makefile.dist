@@ -1,0 +1,2 @@
+dist: $(DIST_PATH)/$(MAIN)
+

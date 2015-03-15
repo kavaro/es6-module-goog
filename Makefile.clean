@@ -1,0 +1,3 @@
+clean:
+	rm -rf $(CLEAN_PATHS)
+	mkdir $(CLEAN_PATHS)
