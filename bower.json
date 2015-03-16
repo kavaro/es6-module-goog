@@ -1,0 +1,19 @@
+{
+  "name": "es6-module-goog",
+  "version": "0.0.0",
+  "homepage": "https://github.com/kavaro/es6-module-goog",
+  "authors": [
+    "karl <karl.van.rompaey@hotmail.com>"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "closure-compiler": "http://dl.google.com/closure-compiler/compiler-latest.zip"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

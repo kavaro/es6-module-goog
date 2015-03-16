@@ -1,23 +1,27 @@
 MAIN      ?= index.js
 DEPS_FILE ?= deps.json
-
-NAMESPACE ?= 'app'
-
 ES6_PATH  ?= src
 GOOG_PATH ?= goog
 DIST_PATH ?= dist
 
-CLEAN_PATHS := $(GOOG_PATH) $(DIST_PATH)
+ES6_MODULE_GOOG           ?= es6-module-goog
+ES6_MODULE_GOOG_NAMESPACE ?= 'app'
+ES6_MODULE_GOOG_OPTIONS   ?= -d $(DEPS_FILE) -e $(ES6_PATH) -g $(GOOG_PATH) -p $(GOOG_PATH) -n $(ES6_MODULE_GOOG_NAMESPACE)
 
-ES6_MODULE_GOOG_OPTIONS := -d $(DEPS_FILE) -e $(ES6_PATH) -g $(GOOG_PATH) -p $(GOOG_PATH) -n $(NAMESPACE)
-ES6_MODULE_GOOG         := es6-module-goog $(ES6_MODULE_GOOG_OPTIONS)
+CLOSURE_COMPILER_JAR          ?= bower_components/closure-compiler/compiler.jar
+CLOSURE_COMPILER_OPTIMIZATION ?= ADVANCED_OPTIMIZATIONS
+CLOSURE_COMPILER_OPTIONS      ?= \
+ --language_in=ES6 --language_out=ES3 \
+ --compilation_level $(CLOSURE_COMPILER_OPTIMIZATION) \
+ --output_wrapper "(function() {%output%})()"
+CLOSURE_COMPILER              ?= java -jar $(CLOSURE_COMPILER_JAR) $(CLOSURE_COMPILER_OPTIONS)
 
-CLOSURE_COMPILER_JAR          := bower_components/closure-compiler/compiler.jar
-CLOSURE_COMPILER_OPTIMIZATION := ADVANCED_OPTIMIZATIONS
-CLOSURE_COMPILER_OPTIONS      := --language_in=ES6 --language_out=ES3 --compilation_level $(CLOSURE_COMPILER_OPTIMIZATION)
-CLOSURE_COMPILER              := java -jar $(CLOSURE_COMPILER_JAR) $(CLOSURE_COMPILER_OPTIONS)
+CLEAN_PATHS ?= $(GOOG_PATH) $(DIST_PATH)
 
-$(DIST_PATH)/$(MAIN): $(shell $(ES6_MODULE_GOOG) $(ES6_PATH)/$(MAIN))
-	@[ -n '$^' ] && echo Compiling $@ from $^ && $(CLOSURE_COMPILER) $^ > $@
+$(DIST_PATH)/$(MAIN): $(shell $(ES6_MODULE_GOOG) $(ES6_MODULE_GOOG_OPTIONS) $(ES6_PATH)/$(MAIN))
+	[ -n '$^' ] && echo Compiling $@ from $^ && $(CLOSURE_COMPILER) $^ > $@
 
 
+# --process_closure_primitives \
+# --only_closure_dependencies \
+# --closure_entry_point app.index
