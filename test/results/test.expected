@@ -1,5 +1,7 @@
+include
 sub/trial.js
 trial.js index::print trial sub/trial
 sub/App.js trial
 sub/trial.js
 trial.js index trial sub/trial
+other.default other.default other.key
