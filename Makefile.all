@@ -1,4 +1,6 @@
 include \
-  node_modules/es6-module-goog/Makefile.main \
+  node_modules/es6-module-goog/Makefile.vars \
   node_modules/es6-module-goog/Makefile.dist \
-  node_modules/es6-module-goog/Makefile.clean
+  node_modules/es6-module-goog/Makefile.closure_compiler \
+  node_modules/es6-module-goog/Makefile.clean \
+  node_modules/es6-module-goog/Makefile.install

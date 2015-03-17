@@ -1,0 +1,3 @@
+$(DIST_PATH)/$(MAIN): $(shell $(ES6_MODULE_GOOG) $(ES6_MODULE_GOOG_OPTIONS) $(ES6_PATH)/$(MAIN))
+	[ -n '$^' ] && echo Compiling $@ from $^ && $(CLOSURE_COMPILER) $^ > $@
+

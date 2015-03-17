@@ -9,6 +9,7 @@ CLOSURE_COMPILER_JAR := ../bower_components/closure-compiler/compiler.jar
 test:
 	@echo Clean
 	@make -s clean
+	@make -s install
 	@make -s dist
 	@echo Run
 	@node dist/$(MAIN) > results/test.result
@@ -20,5 +21,5 @@ cleantest:
 	@rm -f results/test.result
 	@rm -f deps.json
 
-include ../Makefile.main ../Makefile.dist ../Makefile.clean
+include ../Makefile.vars ../Makefile.dist ../Makefile.closure_compiler ../Makefile.clean ../Makefile.install
 
