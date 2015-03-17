@@ -1,2 +1,2 @@
-dist: $(DIST_PATH)/$(MAIN)
+dist:: $(DIST_PATH)/$(MAIN)
 

@@ -9,6 +9,10 @@
   "bin": {
     "es6-module-goog": "./bin/es6-module-goog.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kavaro/es6-module-goog"
+  },
   "dependencies": {
     "bluebird": "^2.3.11",
     "commander": "^2.7.0",

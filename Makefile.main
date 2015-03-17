@@ -21,7 +21,3 @@ CLEAN_PATHS ?= $(GOOG_PATH) $(DIST_PATH)
 $(DIST_PATH)/$(MAIN): $(shell $(ES6_MODULE_GOOG) $(ES6_MODULE_GOOG_OPTIONS) $(ES6_PATH)/$(MAIN))
 	[ -n '$^' ] && echo Compiling $@ from $^ && $(CLOSURE_COMPILER) $^ > $@
 
-
-# --process_closure_primitives \
-# --only_closure_dependencies \
-# --closure_entry_point app.index
